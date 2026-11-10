@@ -1,0 +1,22 @@
+{
+  "name": "invitehub",
+  "private": true,
+  "packageManager": "pnpm@8.6.7",
+  "scripts": {
+    "build": "pnpm --filter @invitehub/shared build && pnpm --filter @invitehub/api build && pnpm --filter @invitehub/web build",
+    "typecheck": "pnpm --filter @invitehub/shared build && pnpm --filter @invitehub/api db:generate && pnpm --filter @invitehub/api exec tsc -p tsconfig.json --noEmit && pnpm --filter @invitehub/web typecheck",
+    "test": "pnpm --filter @invitehub/api test",
+    "db:generate": "pnpm --filter @invitehub/api db:generate",
+    "db:migrate": "pnpm --filter @invitehub/api db:migrate",
+    "db:seed": "pnpm --filter @invitehub/api db:seed"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "pnpm": {
+    "overrides": {
+      "@nuxt/cli": "3.21.1",
+      "vite": "6.0.11"
+    }
+  }
+}
